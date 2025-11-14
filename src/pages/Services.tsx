@@ -167,6 +167,14 @@ export default function Services({ onNavigate }: ServicesProps) {
       {/* Services Grid Section */}
       <section className="relative py-24 bg-gradient-to-b from-[#0a0a0a] to-[#0f172a]">
         <div className="max-w-7xl mx-auto px-6">
+          {/* Enhanced Heading */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-glow-text">
+              Explore All The Services Neptrax Provides
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-4"></div>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {servicesList.map((service, index) => {
               const Icon = service.icon;
@@ -174,19 +182,16 @@ export default function Services({ onNavigate }: ServicesProps) {
                 <div
                   key={index}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="service-card group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 overflow-hidden"
+                  className="service-card group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-none p-6 border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 overflow-hidden"
                   onMouseEnter={() => setHoveredCard(index)}
                   onMouseLeave={() => setHoveredCard(null)}
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  {/* Animated Background Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
-
                   {/* Card Corner Accent */}
                   <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   {/* Image Placeholder */}
-                  <div className="relative mb-6 rounded-xl overflow-hidden h-48 bg-gray-800/50 group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative mb-6 rounded-none overflow-hidden h-48 bg-gray-800/50 group-hover:scale-105 transition-transform duration-500">
                     <img
                       src="/demo.png"
                       alt={service.title}
@@ -196,7 +201,7 @@ export default function Services({ onNavigate }: ServicesProps) {
 
                     {/* Icon Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                      <div className={`w-16 h-16 rounded-none bg-gradient-to-br ${service.gradient} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
                         <Icon className="text-white" size={32} />
                       </div>
                     </div>
@@ -213,12 +218,12 @@ export default function Services({ onNavigate }: ServicesProps) {
                   </div>
 
                   {/* Hover Glow Effect */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 pointer-events-none`}></div>
+                  <div className={`absolute inset-0 rounded-none bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 pointer-events-none`}></div>
 
                   {/* Animated Border */}
-                  <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${service.gradient} p-[1px]`}>
-                      <div className="w-full h-full bg-transparent rounded-2xl"></div>
+                  <div className="absolute inset-0 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className={`absolute inset-0 rounded-none bg-gradient-to-r ${service.gradient} p-[1px]`}>
+                      <div className="w-full h-full bg-transparent rounded-none"></div>
                     </div>
                   </div>
                 </div>
