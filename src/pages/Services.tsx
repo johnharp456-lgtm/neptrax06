@@ -21,7 +21,6 @@ interface ServicesProps {
 
 export default function Services({ onNavigate }: ServicesProps) {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -182,26 +181,21 @@ export default function Services({ onNavigate }: ServicesProps) {
                 <div
                   key={index}
                   ref={(el) => (cardsRef.current[index] = el)}
-                  className="service-card group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-none p-6 border border-gray-700/50 hover:border-cyan-400/50 transition-all duration-500 overflow-hidden"
-                  onMouseEnter={() => setHoveredCard(index)}
-                  onMouseLeave={() => setHoveredCard(null)}
+                  className="service-card group relative bg-gradient-to-br from-gray-900/50 to-gray-800/30 backdrop-blur-sm rounded-none p-6 border border-gray-700/50 transition-all duration-500 overflow-hidden"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  {/* Card Corner Accent */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-cyan-500/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
                   {/* Image Placeholder */}
-                  <div className="relative mb-6 rounded-none overflow-hidden h-48 bg-gray-800/50 group-hover:scale-105 transition-transform duration-500">
+                  <div className="relative mb-6 rounded-none overflow-hidden h-48 bg-gray-800/50">
                     <img
                       src="/demo.png"
                       alt={service.title}
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+                      className="w-full h-full object-cover opacity-60"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-30 mix-blend-overlay`}></div>
 
                     {/* Icon Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className={`w-16 h-16 rounded-none bg-gradient-to-br ${service.gradient} flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}>
+                      <div className={`w-16 h-16 rounded-none bg-gradient-to-br ${service.gradient} flex items-center justify-center shadow-lg`}>
                         <Icon className="text-white" size={32} />
                       </div>
                     </div>
@@ -209,22 +203,12 @@ export default function Services({ onNavigate }: ServicesProps) {
 
                   {/* Content */}
                   <div className="relative z-10">
-                    <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-white mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-4 group-hover:text-gray-300 transition-colors duration-300">
+                    <p className="text-gray-400 text-sm leading-relaxed line-clamp-4">
                       {service.description}
                     </p>
-                  </div>
-
-                  {/* Hover Glow Effect */}
-                  <div className={`absolute inset-0 rounded-none bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 pointer-events-none`}></div>
-
-                  {/* Animated Border */}
-                  <div className="absolute inset-0 rounded-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className={`absolute inset-0 rounded-none bg-gradient-to-r ${service.gradient} p-[1px]`}>
-                      <div className="w-full h-full bg-transparent rounded-none"></div>
-                    </div>
                   </div>
                 </div>
               );
