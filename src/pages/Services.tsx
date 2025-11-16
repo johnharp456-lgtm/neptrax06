@@ -11,7 +11,10 @@ import {
   Smartphone,
   BarChart3,
   ShoppingCart,
-  PenTool
+  PenTool,
+  Laptop,
+  Rocket,
+  Clock
 } from 'lucide-react';
 import WebGLParticles from './WebGLParticles';
 
@@ -22,6 +25,7 @@ interface ServicesProps {
 export default function Services({ onNavigate }: ServicesProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setTimeout(() => setIsLoaded(true), 300);
@@ -123,7 +127,7 @@ export default function Services({ onNavigate }: ServicesProps) {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] overflow-hidden">
+    <div className="min-h-screen bg-[#0a0a0a] overflow-hidden" ref={sectionRef}>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0">
@@ -213,6 +217,152 @@ export default function Services({ onNavigate }: ServicesProps) {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* New Services Showcase Section */}
+      <section className="relative py-24 bg-gradient-to-b from-[#0f172a] to-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-glow-text">
+              Our Core Solutions
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Transforming ideas into powerful digital solutions that drive growth
+            </p>
+          </div>
+
+          {/* Services Showcase Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            {/* Featured Service Card */}
+            <div className="service-card group relative bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-cyan-500/20 transition-all duration-500 overflow-hidden hover:border-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-500/10">
+              <div className="service-tag absolute top-6 left-6 bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold z-10">
+                Featured Service
+              </div>
+              
+              <div className="service-image relative h-64 rounded-xl mb-8 bg-gradient-to-br from-cyan-500/20 to-blue-600/20 overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/30"></div>
+                <img
+                  src="/demo.png"
+                  alt="Website Development"
+                  className="w-full h-full object-cover opacity-40"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-2xl">
+                    <Laptop className="text-white" size={40} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="service-content relative z-10">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Website Development
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  Developing digital experiences that are as beautiful as they are functional. 
+                  We create responsive, user-friendly websites that help your business stand out.
+                </p>
+                <a 
+                  href="#" 
+                  className="service-link inline-flex items-center text-cyan-400 font-semibold text-lg hover:text-cyan-300 transition-colors duration-300 group/link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('projects');
+                  }}
+                >
+                  Explore Projects 
+                  <span className="ml-2 group-hover/link:translate-x-1 transition-transform duration-300">→</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Newly Added Service Card */}
+            <div className="service-card group relative bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-emerald-500/20 transition-all duration-500 overflow-hidden hover:border-emerald-400/40 hover:shadow-2xl hover:shadow-emerald-500/10">
+              <div className="service-tag absolute top-6 left-6 bg-gradient-to-r from-emerald-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold z-10">
+                Newly Added
+              </div>
+              
+              <div className="service-image relative h-64 rounded-xl mb-8 bg-gradient-to-br from-emerald-500/20 to-green-600/20 overflow-hidden flex items-center justify-center">
+                <div className="absolute inset-0 bg-black/30"></div>
+                <img
+                  src="/demo.png"
+                  alt="AI Chatbots Development"
+                  className="w-full h-full object-cover opacity-40"
+                />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center shadow-2xl">
+                    <Bot className="text-white" size={40} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="service-content relative z-10">
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  AI Chatbots Development
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                  Your Dedicated AI Support Bot, Built Just for Coaches. 
+                  Automate customer interactions and provide 24/7 support with intelligent chatbots.
+                </p>
+                <a 
+                  href="#" 
+                  className="service-link inline-flex items-center text-emerald-400 font-semibold text-lg hover:text-emerald-300 transition-colors duration-300 group/link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    onNavigate('projects');
+                  }}
+                >
+                  Explore Projects 
+                  <span className="ml-2 group-hover/link:translate-x-1 transition-transform duration-300">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Mission Statement Section */}
+          <div className="mission-section relative bg-gradient-to-br from-gray-900/80 to-gray-800/50 backdrop-blur-sm rounded-2xl p-12 border border-purple-500/20 overflow-hidden text-center">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500"></div>
+            
+            <div className="relative z-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center gap-4">
+                <Rocket className="text-cyan-400" size={32} />
+                Streamline Your Business
+                <Clock className="text-purple-400" size={32} />
+              </h2>
+              
+              <div className="mission-text text-xl md:text-2xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                <span className="highlight bg-gradient-to-r from-cyan-500/20 to-blue-500/20 px-3 py-1 rounded-lg mx-1">
+                  Simplify operations.
+                </span>
+                <span className="highlight bg-gradient-to-r from-emerald-500/20 to-green-500/20 px-3 py-1 rounded-lg mx-1">
+                  Accelerate results.
+                </span>
+                Reclaim your time for what truly grows your business. 
+                From no-code agility to custom development, we make workflows 
+                effortless and impactful.
+              </div>
+
+              <div className="mt-12">
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="group relative px-12 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg overflow-hidden transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/25"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <span>Get Started Today</span>
+                    <span className="group-hover:translate-x-1 transition-transform duration-300">→</span>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-blue-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                </button>
+              </div>
+            </div>
+
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-500 rounded-full blur-3xl"></div>
+            </div>
           </div>
         </div>
       </section>
