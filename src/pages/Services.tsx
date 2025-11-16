@@ -217,6 +217,98 @@ export default function Services({ onNavigate }: ServicesProps) {
         </div>
       </section>
 
+      {/* Premium Services Showcase Section */}
+      <section className="relative py-32 bg-gradient-to-b from-[#0f172a] to-[#0a0a0a]">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* Three-Column Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            {/* Part 1: Featured Service Card */}
+            <div className="flex flex-col justify-between featured-service-card group">
+              <div>
+                <span className="inline-block text-sm font-medium text-cyan-400/80 mb-4 tracking-wider">
+                  Featured Service
+                </span>
+                <h3 className="text-4xl md:text-5xl lg:text-5xl font-black text-white mb-6 leading-tight group-hover:text-cyan-300 transition-colors duration-300">
+                  Website Development
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  Developing digital experiences that are as beautiful as they are functional.
+                </p>
+              </div>
+
+              {/* Featured Image Placeholder */}
+              <div className="mb-8 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 featured-image-frame group-hover:shadow-2xl transition-all duration-500">
+                <img
+                  src="/demo.png"
+                  alt="Website Development"
+                  className="w-full h-64 md:h-72 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Explore Link */}
+              <a
+                href="#"
+                className="inline-flex items-center px-6 py-3 border border-white/30 rounded-full text-white font-semibold hover:border-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all duration-300 group/link"
+              >
+                Explore Projects
+                <span className="ml-2 group-hover/link:translate-x-1 transition-transform duration-300">→</span>
+              </a>
+            </div>
+
+            {/* Part 2: Central Text Block */}
+            <div className="flex flex-col justify-center items-center md:items-start central-text-block py-8 md:py-0">
+              <h2 className="text-5xl md:text-4xl lg:text-5xl font-black text-white leading-tight mb-6 text-center md:text-left">
+                <span className="block">Simplify</span>
+                <span className="block">operations.</span>
+                <span className="block">Accelerate</span>
+                <span className="block">results.</span>
+                <span className="block">Reclaim your time for what</span>
+                <span className="block">truly grows your</span>
+                <span className="block">business.</span>
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed mt-8 text-center md:text-left max-w-md">
+                From no-code agility to custom development, we make workflows effortless and impactful.
+              </p>
+            </div>
+
+            {/* Part 3: Newly Added Card */}
+            <div className="flex flex-col justify-between newly-added-card group">
+              <div>
+                <span className="inline-block text-sm font-medium text-cyan-400/80 mb-4 tracking-wider">
+                  Newly Added
+                </span>
+                <h3 className="text-4xl md:text-5xl lg:text-5xl font-black text-white mb-6 leading-tight group-hover:text-cyan-300 transition-colors duration-300">
+                  AI Chatbots Development
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                  Your Dedicated AI Support Bot, Built Just for Coaches
+                </p>
+              </div>
+
+              {/* Newly Added Image Placeholder */}
+              <div className="mb-8 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 newly-added-image-frame group-hover:shadow-2xl transition-all duration-500">
+                <img
+                  src="/demo.png"
+                  alt="AI Chatbots Development"
+                  className="w-full h-64 md:h-72 object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Explore Link */}
+              <a
+                href="#"
+                className="inline-flex items-center px-6 py-3 border border-white/30 rounded-full text-white font-semibold hover:border-cyan-400 hover:text-cyan-300 hover:bg-cyan-400/10 transition-all duration-300 group/link"
+              >
+                Explore Projects
+                <span className="ml-2 group-hover/link:translate-x-1 transition-transform duration-300">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Modern Animation Styles */}
       <style jsx>{`
         @keyframes glow-text {
@@ -275,6 +367,118 @@ export default function Services({ onNavigate }: ServicesProps) {
         @media (max-width: 640px) {
           .grid {
             grid-template-columns: repeat(1, 1fr);
+          }
+        }
+
+        /* Featured & Newly Added Cards */
+        .featured-service-card,
+        .newly-added-card {
+          position: relative;
+          padding: 2rem;
+          background: rgba(15, 23, 42, 0.6);
+          border: 1px solid rgba(148, 163, 184, 0.1);
+          border-radius: 1.5rem;
+          backdrop-filter: blur(10px);
+          transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .featured-service-card::before,
+        .newly-added-card::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, transparent 100%);
+          border-radius: 1.5rem;
+          opacity: 0;
+          transition: opacity 0.5s duration-300;
+          pointer-events: none;
+        }
+
+        .featured-service-card:hover::before,
+        .newly-added-card:hover::before {
+          opacity: 1;
+        }
+
+        .featured-service-card:hover,
+        .newly-added-card:hover {
+          border-color: rgba(34, 211, 238, 0.3);
+          background: rgba(15, 23, 42, 0.8);
+          transform: translateY(-8px);
+          box-shadow: 0 20px 50px rgba(34, 211, 238, 0.15);
+        }
+
+        .featured-image-frame,
+        .newly-added-image-frame {
+          position: relative;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+          border: 1px solid rgba(148, 163, 184, 0.1);
+          transition: all 0.5s duration-300;
+        }
+
+        .featured-image-frame:hover,
+        .newly-added-image-frame:hover {
+          box-shadow: 0 8px 40px rgba(34, 211, 238, 0.2);
+          border-color: rgba(34, 211, 238, 0.2);
+        }
+
+        /* Central Text Block */
+        .central-text-block h2 {
+          font-size: clamp(2.5rem, 8vw, 3.5rem);
+          font-weight: 900;
+          letter-spacing: -0.02em;
+        }
+
+        .central-text-block h2 span:nth-child(1),
+        .central-text-block h2 span:nth-child(2) {
+          background: linear-gradient(135deg, #ffffff 0%, #e5f3ff 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .central-text-block h2 span:nth-child(3),
+        .central-text-block h2 span:nth-child(4) {
+          background: linear-gradient(135deg, #22d3ee 0%, #06b6d4 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .central-text-block h2 span:nth-child(5),
+        .central-text-block h2 span:nth-child(6),
+        .central-text-block h2 span:nth-child(7) {
+          background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+          .featured-service-card,
+          .newly-added-card {
+            padding: 1.5rem;
+          }
+
+          .featured-service-card h3,
+          .newly-added-card h3 {
+            font-size: 2rem;
+          }
+
+          .central-text-block h2 {
+            font-size: 1.75rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .featured-service-card,
+          .newly-added-card {
+            padding: 1.25rem;
+          }
+
+          .featured-image-frame,
+          .newly-added-image-frame {
+            height: 240px;
           }
         }
       `}</style>
